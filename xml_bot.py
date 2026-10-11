@@ -6,11 +6,14 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from telegram import Bot
 
-BOT_TOKEN = "8961029801:AAEMDqSTEeQVhlzd9gNBUpATNeDug_ehXig"
-CHAT_ID = "1789080411"
-XML_PATH = "/home/tt/kirill.xml"
-PREV_PATH = "/home/tt/kirill.xml.prev"
-CHECK_INTERVAL = 5
+BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
+CHAT_ID = os.environ.get("CHAT_ID", "")
+XML_PATH = os.environ.get("XML_PATH", "/home/tt/kirill.xml")
+PREV_PATH = XML_PATH + ".prev"
+CHECK_INTERVAL = int(os.environ.get("CHECK_INTERVAL", "5"))
+
+if not BOT_TOKEN or not CHAT_ID:
+    raise ValueError("BOT_TOKEN and CHAT_ID environment variables are required")
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -38,7 +41,7 @@ GENERAL_LABELS = {
     "login-delay-msec": "Задержка входа (мс)",
     "user-timeout": "Таймаут пользователя (с)",
     "tcpport": "TCP порт",
-    "udpport": "UDP 端口",
+    "udpport": "UDP порт",
     "voicetx-limit": "Лимит передачи голоса",
     "vidcaptx-limit": "Лимит передачи видео",
     "mediafiletx-limit": "Лимит передачи медиа",
@@ -83,14 +86,6 @@ CHANNEL_LABELS = {
     "channel-type": "Тип канала",
     "userdata": "Данные пользователя",
     "transmit-delay-msec": "Задержка передачи (мс)",
-}
-
-BAN_LABELS = {
-    "ipaddr": "IP-адрес",
-    "username": "Имя пользователя",
-    "bantype": "Тип блокировки",
-    "bantime": "Время блокировки",
-    "owner": "Кто заблокировал",
 }
 
 FILE_STORAGE_LABELS = {
