@@ -1,10 +1,13 @@
 [Unit]
-Description=XML Monitor Telegram Bot
+Description=TeamTalk XML Monitor Telegram Bot
 After=network.target
 
 [Service]
 Type=simple
 WorkingDirectory=/home/tt
+Environment="BOT_TOKEN=your_bot_token_here"
+Environment="CHAT_ID=your_chat_id_here"
+Environment="XML_PATH=/home/tt/kirill.xml"
 ExecStart=/usr/bin/python3 /home/tt/xml_bot.py
 Restart=always
 RestartSec=5
