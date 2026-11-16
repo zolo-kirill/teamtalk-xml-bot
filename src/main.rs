@@ -405,7 +405,7 @@ async fn main() {
     let config = Config {
         bot_token: std::env::var("BOT_TOKEN").expect("BOT_TOKEN not set"),
         chat_id: std::env::var("CHAT_ID").expect("CHAT_ID not set"),
-        xml_path: std::env::var("XML_PATH").unwrap_or_else(|_| "/home/tt/kirill.xml".to_string()),
+        xml_path: std::env::var("XML_PATH").unwrap_or_else(|_| "/home/tt/config.xml".to_string()),
         check_interval: std::env::var("CHECK_INTERVAL")
             .unwrap_or_else(|_| "5".to_string())
             .parse()

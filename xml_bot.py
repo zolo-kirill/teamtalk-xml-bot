@@ -8,7 +8,7 @@ from telegram import Bot
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 CHAT_ID = os.environ.get("CHAT_ID", "")
-XML_PATH = os.environ.get("XML_PATH", "/home/tt/kirill.xml")
+XML_PATH = os.environ.get("XML_PATH", "/home/tt/config.xml")
 PREV_PATH = XML_PATH + ".prev"
 CHECK_INTERVAL = int(os.environ.get("CHECK_INTERVAL", "5"))
 
